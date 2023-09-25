@@ -1,0 +1,366 @@
+/* * { box-sizing: border-box; } */
+
+/* 
+* Nomeclaturas
+    • GC_P01: Container original. 
+*/
+.GC_P01 ~ br { display: none; }
+.GC_P01 br { display: none; }
+.GC_P01 * br { display: none; }
+
+/* Necessário para o Fórum */
+.GC_P01-post .line_break::before, .GC_P01-post .line_break::after {
+    content: "\a";
+    white-space: pre;
+}
+.line_break-true::before, .line_break-true::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.GC_P01-info div, .GC_P01-info p, .GC_P01-post div, .GC_P01-post p {
+    margin: 20px 0;
+}
+
+/* .GC_P01-post p::before, .GC_P01-post p::after {
+    content: "\a";
+    white-space: pre;
+} */
+
+.GC_P01 {
+    --brdRds-primary: 0.3rem;
+    --sdInf-width: 60%;
+    --sd-width: 20%;
+    --bg-clr-primary: #000;
+    --bg-clr-lowOpacity: #000000f8;
+    --dialog-height: 180px;
+    
+    --fz-primary: 1rem;
+    --fz-side-info: 0.8rem;
+    
+    /* Scroll botão */
+    --bg-scroll-thumb: linear-gradient(to top, maroon, red, maroon);
+    /* Scroll fundo */
+    --bg-scroll-track: #e7e7e7;
+    
+    width: min(1100px, 70vw);
+    height: max(550px, 75vh);
+    font-size: var(--fz-primary);
+    border: 2px solid black;
+    display: flex;
+    overflow-x: hidden;
+    background-image: url('https://imgpile.com/images/Ccybgk.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 250%;
+    position: relative;
+    overflow: hidden;
+
+    resize: both;
+    cursor: default;
+}
+.GC_P01, .GC_P01 * { box-sizing: border-box; }
+
+.GC_P01 small { 
+    display: block;
+    font-size: 0.6rem;
+}
+
+/* Scrollbar */
+.GC_P01 *::-webkit-scrollbar { width: 8px; }
+
+.GC_P01 *::-webkit-scrollbar-track {
+    border-radius: var(--brdRds-primary);
+    background-color: var(--bg-scroll-track);
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.GC_P01 *::-webkit-scrollbar-thumb {
+    border-radius: var(--brdRds-primary);
+    background: var(--bg-scroll-thumb);
+}
+
+/* ************************************** */
+/* Direção dos Blocos */
+/* Blocos Pares */
+.post-flex-l { flex-direction: row; }
+.post-flex-l .GC_P01-hover_in { border-radius: 0 50px 50px 0; }
+.post-flex-l .GC_P01-info { left: calc(var(--sd-width) - 0.65em); }
+
+/* Blocos Ímpares */
+.post-flex-r { flex-direction: row-reverse; }
+.post-flex-r .GC_P01-hover_in { border-radius: 50px 0 0 50px; }
+.post-flex-r .GC_P01-info { right: calc(var(--sd-width) - 0.65em); }
+
+
+/* ************************************** */
+/* Painel Lateral */
+.GC_P01-sidebr {
+    width: var(--sd-width);
+    height: 100%;
+    background-color: var(--bg-clr-primary);
+    text-align: center;
+    border-right: 2px solid maroon;
+    color: white;
+    
+    display: grid;
+    align-content: flex-start;
+    padding-top: 20%;
+}
+.GC_P01-sidebr .side_title {
+    color: maroon;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+.GC_P01-sidebr span {
+    font-size: var(--fz-side-info);
+}
+
+/* ************************************** */
+/* Postagem */
+.GC_P01-post {
+    height: calc(100% - 7%);
+    width: 80%;
+    margin: 2% 1%;
+    padding: 1rem;
+    color: white;
+    background-color: var(--bg-clr-lowOpacity);
+    overflow-y: scroll;
+    border-radius: var(--brdRds-primary);
+}
+
+
+/* ↓ Não funciona no Nova Era */
+/* .GC_P01-post:first-letter {
+    font: 2rem SGothic; 
+    float: left; 
+    margin: 7px 5px -3px 0;
+    padding: 10px; 
+    border: 1px solid maroon;
+} */
+
+/* ************************** */
+/* Imagens */
+.GC_P01-IMG-block {
+    text-align: center;
+    position: relative;
+    margin: 50px 0;
+}
+.GC_P01-IMG-block img {
+    transform: scale(0.95);
+    transition: all .5s ease-in-out;
+    border-radius: var(--brdRds-primary);
+    filter: blur(1rem);
+    max-height: 700px;
+}
+.GC_P01-IMG-block img:hover {
+    transform: scale(1);
+    filter: blur(0);
+}
+
+.GC_P01-IMG-block .overlay_text {
+    background: #000000d2;
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--brdRds-primary);
+}
+.GC_P01-IMG-block a:hover + .overlay_text { display: none; }
+
+
+/* Texto overlay */
+.overlay_text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* ************************************** */
+/* Details */
+.GC_P01-post details { border-radius: var(--brdRds-primary); }
+
+.GC_P01-post details p {
+    transition: all .5s;
+    animation: 3s forwards fadeIn;
+}
+
+.GC_P01-post details summary {
+    border-radius: var(--brdRds-primary);
+    box-shadow: maroon 0px 0px 7px 3px;
+    border: 3px outset red;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+.GC_P01-post details summary::after {
+    content: " (clique para abrir)";
+    font-style: italic;
+    font-size: 0.6em;
+}
+
+.GC_P01-post details[open] { 
+    box-shadow: maroon 0px 0px 10px 5px;
+    padding: 0.5rem;
+}
+.GC_P01-post details[open] p { 
+    padding: 0.2rem;
+}
+.GC_P01-post details[open] summary { 
+    box-shadow: maroon 0px 5px 10px 0px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 2px solid red;;
+}
+.GC_P01-post details[open] summary::after { content: ""; }
+
+@-webkit-keyframes fadeIn {
+    0%      { opacity: 0%; }
+    100%    { opacity: 100%; }
+}
+
+@keyframes fadeIn {
+    0%      { opacity: 0%; }
+    100%    { opacity: 100%; }
+}
+
+/* ************************************** */
+/* Chamada do Info */
+.GC_P01-hover_in {
+    color: white;
+    background-color: var(--bg-clr-primary);
+    height: fit-content;
+    opacity: 75%;
+    font-size: 2rem;
+    padding: 5px;
+    padding-right: 8px;
+    cursor: pointer;
+    z-index: 1;
+}
+.GC_P01-hover_in:hover { opacity: 100%; }
+
+/* ************************************** */
+.GC_P01-hover_in:hover + .GC_P01-info, 
+.GC_P01-info:hover { 
+    width: var(--sdInf-width);
+    overflow-y: auto;
+    padding: 1rem;
+    opacity: 100%;
+}
+
+/* ************************************** */
+/* Informações extras */
+.GC_P01-info {
+    color: white;
+    position: absolute;
+    top: 1%;
+    z-index: 1;
+    background-color: var(--bg-clr-lowOpacity);
+    overflow: hidden;
+    width: 0;
+    height: 90%;
+    opacity: 0;
+    transition: .5s ease;
+}
+
+.char-info {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;    
+}
+
+.info-avatar {
+    height: 150px;
+    width: 150px;
+    border: 2px solid red;
+}
+.info-block {
+    display: grid;
+    text-align: center;
+    align-content: flex-start;
+    border-top: 1px solid red;
+}
+.info-block > section {
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.info-block section header {
+    font-weight: bold;
+    padding: 5px 0;
+}
+.info-block > section header {
+    border-bottom: 1px solid red;
+}
+
+/* ************************************** */
+/* Caixas de diálogo */
+.dialog_box {
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    height: var(--dialog-height);
+    width: 100%;
+}
+
+.dialog_l { 
+    grid-template-columns: 25% 75%;
+    grid-template-areas: 'avatar txtD'; 
+}
+.dialog_r { 
+    grid-template-columns: 75% 25%;
+    grid-template-areas: 'txtD avatar'; 
+}
+
+/* Curvatura dos Avatares */
+.dialog_l .dialog_avatar, .dialog_l .avatar_overlay { border-radius: 100px 0 0 100px; }
+.dialog_r .dialog_avatar, .dialog_r .avatar_overlay { border-radius: 0 100px 100px 0; }
+
+/* Inverter a barra de scroll */
+.dialog_r .dialog_content { transform: scaleX(-1); }
+.dialog_r .dialog_content p { transform: scaleX(-1); }
+
+/* Avatar */
+.dialog_avatar {
+    position: relative;
+    height: 100%;
+    border: 2px solid red;
+    overflow: hidden;
+    grid-area: avatar;
+}
+.dialog_avatar img {
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+.dialog_avatar:hover img { transform: scale(1.3); }
+
+/* Overlay sobre o avatar */
+.avatar_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #ba0000d2;
+}
+.dialog_avatar:hover .avatar_overlay { opacity: 1; }
+
+.dialog_content {
+    color: black;
+    height: 100%;
+    overflow: auto;
+    padding: 0 1rem;
+    grid-area: txtD;
+    background-color: white;
+}
