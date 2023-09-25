@@ -21,6 +21,9 @@
 .GC_P01-info div, .GC_P01-info p, .GC_P01-post div, .GC_P01-post p {
     margin: 20px 0;
 }
+.GC_P01-post .avatar_overlay {
+    margin: 0;
+}
 
 /* .GC_P01-post p::before, .GC_P01-post p::after {
     content: "\a";
